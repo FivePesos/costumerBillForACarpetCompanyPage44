@@ -7,7 +7,7 @@
 
 //print functions
 void printMeasurement(int length, int width);
-void printCharges(int area, double carpetCost, int discountValue);
+void printCharges(int lenghtFeet, int widthFeet, double carpetCost, int discountValue);
 
 //user input functions
 int lengthFeetInput();
@@ -40,12 +40,9 @@ int main()
     costumerDiscount = costumerDiscountInput();
     squareFootCost = squareFootCostInput();
 
-    //Calls the calculateArea whereas the locally decalared variable (area) is the receiver of the return value of the function
-    area = calculateArea(lengthFeet, widthFeet);
-
     //Calls the printMeasurement and printCharges to print the output
     printMeasurement(lengthFeet, widthFeet);
-    printCharges(area,squareFootCost, costumerDiscount);
+    printCharges(lengthFeet,widthFeet,squareFootCost, costumerDiscount);
 
 
     return 0;
@@ -62,7 +59,7 @@ void printMeasurement(int length, int width){
 }
 
 //Void with paramenter whereas the function accepts three paremeter called area, carpetCost, discountValue
-void printCharges(int area,double carpetCost, int discountValue){
+void printCharges(int lenghtFeet, int widthFeet ,double carpetCost, int discountValue){
     //Local Declarations
     double laborCharge;
     double carpetCharge;
@@ -71,7 +68,7 @@ void printCharges(int area,double carpetCost, int discountValue){
     double subtotalCharge;
     double taxCharge;
     double totalCharge;
-
+    int area = calculateArea(lenghtFeet, widthFeet);
     //Assigning the variables to the Calculation Functions to recieve the return values of each function
     laborCharge = calculateLaborCost(area);
     carpetCharge = calculateCarpetCost(area, carpetCost);
