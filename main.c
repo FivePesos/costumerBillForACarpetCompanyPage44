@@ -9,6 +9,12 @@
 void printMeasurement(int length, int width);
 void printCharges(int area, double carpetCost, int discountValue);
 
+//user input functions
+int lengthFeetInput();
+int widthFeetInput();
+int costumerDiscountInput();
+double squareFootCostInput();
+
 //calculations functions
 int calculateArea(int length, int width);
 double calculateCarpetCost(int area, double squareFootCost);
@@ -28,15 +34,11 @@ int main()
     int costumerDiscount;
     double squareFootCost;
 
-    //UserInput
-    printf("Length of room (feet)?\t\t\t");
-    scanf("%d", &lengthFeet);
-    printf("Width of room (feet)?\t\t\t");
-    scanf("%d", &widthFeet);
-    printf("Customer discount (percent)?\t\t");
-    scanf("%d", &costumerDiscount);
-    printf("Cost per square foot (xxx.xx)?\t\t");
-    scanf("%lf", &squareFootCost);
+    //Calls the User input functions and assign them with variables
+    lengthFeet = lengthFeetInput();
+    widthFeet = widthFeetInput();
+    costumerDiscount = costumerDiscountInput();
+    squareFootCost = squareFootCostInput();
 
     //Calls the calculateArea whereas the locally decalared variable (area) is the receiver of the return value of the function
     area = calculateArea(lengthFeet, widthFeet);
@@ -53,10 +55,10 @@ int main()
 void printMeasurement(int length, int width){
     //Prints the Measurement format can be seen in the book
     printf("\n\n\t\t\t\tMeasurement\n\n");
-    printf("\tLenght  \t\t\t\t    %d ft\n", length);
-    printf("\tWidth   \t\t\t\t    %d ft\n", width);
+    printf("\tLenght  \t\t\t\t\t    %d ft\n", length);
+    printf("\tWidth   \t\t\t\t\t    %d ft\n", width);
     //calls the calculateArea function to measure the Area
-    printf("\tArea    \t\t\t\t    %d square ft", calculateArea(length, width));
+    printf("\tArea    \t\t\t\t\t    %d square ft", calculateArea(length, width));
 }
 
 //Void with paramenter whereas the function accepts three paremeter called area, carpetCost, discountValue
@@ -95,6 +97,31 @@ void printCharges(int area,double carpetCost, int discountValue){
     printf("\tSUBTOTAL\t\t\t\t\t$%.2lf\n", subtotalCharge);
     printf("\tTax\t\t\t\t\t\t$%.2lf\n",taxCharge);
     printf("\tTotal\t\t\t\t\t\t$%.2lf\n", totalCharge);
+}
+//User input functions
+int lengthFeetInput(){
+    int lengthFeet;
+    printf("Length of room (feet)?\t\t\t");
+    scanf("%d", &lengthFeet);
+    return lengthFeet;
+}
+int widthFeetInput(){
+    int widthFeet;
+    printf("Width of room (feet)?\t\t\t");
+    scanf("%d", &widthFeet);
+    return widthFeet;
+}
+int costumerDiscountInput(){
+    int costumerDiscount;
+    printf("Customer discount (percent)?\t\t");
+    scanf("%d", &costumerDiscount);
+    return costumerDiscount;
+}
+double squareFootCostInput(){
+    double squareFootCost;
+    printf("Cost per square foot (xxx.xx)?\t\t");
+    scanf("%lf", &squareFootCost);
+    return squareFootCost;
 }
 
 //Calculation function are all non - void with parameters whereas they all have a return statement
