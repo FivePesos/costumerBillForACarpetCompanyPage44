@@ -21,7 +21,7 @@ double calculateCarpetCost(int area, double squareFootCost);
 double calculateLaborCost(int area);
 double calculateInstalledPrice(double carpetCharge, double laborCharge);
 double calculateDiscount(int costumerDiscount, double installedPriceCharge);
-double calculateSubtotal(int costumerDiscount, double installedPriceCharge);
+double calculateSubtotal(double costumerDiscount, double installedPriceCharge);
 double calculateTax(double subtotalCharge);
 double calculateTotal(double subtotalCharge, double taxCharge);
 
@@ -68,8 +68,9 @@ void printCharges(int lenghtFeet, int widthFeet ,double carpetCost, int discount
     double subtotalCharge;
     double taxCharge;
     double totalCharge;
-    int area = calculateArea(lenghtFeet, widthFeet);
+    int area;
     //Assigning the variables to the Calculation Functions to recieve the return values of each function
+    area = calculateArea(lenghtFeet, widthFeet);
     laborCharge = calculateLaborCost(area);
     carpetCharge = calculateCarpetCost(area, carpetCost);
     installedPriceCharge = calculateInstalledPrice(laborCharge, carpetCharge);
@@ -133,8 +134,8 @@ double calculateCarpetCost(int area, double squareFootCost){
     return total;
 }//Calculates the carpet cost by multiplying the area and the square foot cost
 double calculateLaborCost(int area){
-    int total;
-    total = area * LABOR_COST;
+    double total;
+    total = (double)area * LABOR_COST;
     return total;
 }//Calculates the labor cost by multiplying the area and the defined constant LABOR_COST
 double calculateInstalledPrice(double carpetCharge, double laborCharge){
@@ -151,7 +152,7 @@ double calculateDiscount(int costumerDiscount, double installedPriceCharge ){
 
     return total;
 }//Calculating the discount by converting the costumer discount in to a decimal point and then multiplying it to te installed price charge
-double calculateSubtotal(int costumerDiscount, double installedPriceCharge){
+double calculateSubtotal(double costumerDiscount, double installedPriceCharge){
     double total;
     total = costumerDiscount - installedPriceCharge;
     return total;
